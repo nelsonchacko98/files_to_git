@@ -1,6 +1,7 @@
 from genericpath import exists
 from pdf2image import convert_from_path
 import os 
+from tqdm import tqdm as tq
 
 
 def convert(file,outputDir) :
@@ -34,14 +35,14 @@ def convert_in_dir(inputDir,outputDir) :
         if file.endswith(".pdf") :
             pdf_files.append(file)
             
-    for file in pdf_files : 
+    for file in tq(pdf_files) : 
         file_path = inputDir+file
         convert(file_path,outputDir)
         
     
-file = "1620387138667-MEGHA_RESUME.pdf"
-inputDir = "resumes/"
-outputDir = "images/"
+# file = "1620387138667-MEGHA_RESUME.pdf"
+inputDir = "TestResumes/"
+outputDir = "TestImages/"
 
 # convert(file,outputDir)
 convert_in_dir(inputDir,outputDir)
